@@ -35,7 +35,7 @@ As AI agents become more autonomous, giving them shell access is a significant s
 Create the initial file structure and check for requirements with
 
 ```bash
-./init.sh
+bash init.sh
 ```
 
 ### 1. Configure Your Box
