@@ -1,0 +1,50 @@
+# --- Nix / Sandbox Internals ---
+# This is the biggest speed boost; prevents Nix from hashing your workspace
+workspace/
+.mac.sb
+.sandbox_prefs
+.direnv/
+result
+result-*
+flake.lock
+
+# --- Node.js / OpenClaw ---
+# Essential to ignore this so Nix doesn't "clone" it on startup
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+package.json
+
+# --- Python ---
+# Prevents large bytecode/env files from slowing down the flake
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.python-version
+
+# --- Environment & Secrets ---
+# Keep your host environment variables out of the shared config
+.env
+.env.local
+.env.*.local
+
+# --- Compiled Binaries & OS Trash ---
+*.exe
+*.dll
+*.so
+*.dylib
+.DS_Store
+Thumbs.db
+
+# --- Go / Rust / Build Artifacts ---
+# If you use these tools, keep the build folders out of the flake
+bin/
+obj/
+target/
+go.sum 

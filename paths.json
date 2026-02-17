@@ -1,0 +1,12 @@
+{
+  "read-write": [
+    "~/Documents/ai-projects/active-agent-workspace",
+    "/tmp/openbox-logs"
+  ],
+  "read-only": [
+    "~/Documents/reference-docs",
+    "~/.config/git",
+    "/usr/local/bin"
+  ],
+  "hidden": ["~/.ssh", "~/.aws", "~/.env", "~/Library/Keychains"]
+}
