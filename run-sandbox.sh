@@ -113,5 +113,6 @@ EOF
   echo -e "\033[1;34m📦 Only specified JSON paths and Nix/System tools are visible.\033[0m"
 
   trap 'rm -f .mac.sb' EXIT
+  git add -f -N flake.nix setup-env.sh
   sandbox-exec -f .mac.sb nix --extra-experimental-features "nix-command flakes" develop --command "$SANDBOX_SHELL"
 fi

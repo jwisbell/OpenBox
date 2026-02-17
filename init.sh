@@ -37,5 +37,5 @@ go get github.com/charmbracelet/lipgloss
 chmod +x run-sandbox.sh
 
 echo -e "\n✅ Setup Complete!"
-echo "🚀 Run 'go run cmd/setup/main.go' to configure your sandbox."
-echo "🛠️  Then run './run-sandbox.sh' to enter."
+echo "🚀 Run './run-sandbox.sh' to configure and enter your sandbox."
+echo "🛠️  Then run './run-sandbox.sh' at any point to re-enter."
