@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# 1. Check if we need to run the setup
+# Check if we need to run the setup
 if [ ! -f "flake.nix" ]; then
   echo "First time setup: Building Go TUI..."
   nix --extra-experimental-features "nix-command flakes" run nixpkgs#go -- run cmd/setup/main.go
 fi
 
-# 2. Extract Prefs
+# Extract pref from .sandbox_prefs
 NETWORK=$(python3 -c "import json; print(json.load(open('.sandbox_prefs'))['network'])" 2>/dev/null || echo "True")
 PATH_DATA=$(python3 -c "import json; d=json.load(open('.sandbox_prefs'))['extra_paths']; print(' '.join([f'{k},{v}' for k,v in d.items()]))" 2>/dev/null)
 HIDDEN_PATHS=$(python3 -c "import json; print(' '.join(json.load(open('.sandbox_prefs'))['hidden_paths']))" 2>/dev/null)
 
 mkdir -p ./workspace
 
-# 3. Launch Sandbox (Linux or Mac)
+# Launch Sandbox (Linux or Mac) -- Linux not tested!
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux (bwrap) is already deny-by-default (unshare-all)
   NET_FLAG=$([ "$NETWORK" == "True" ] && echo "--share-net" || echo "--unshare-net")

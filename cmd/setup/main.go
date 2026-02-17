@@ -237,7 +237,7 @@ func (m model) View() string {
 }
 
 func (m model) saveAndExit() {
-	// 1. Process Preferences
+	// Process file paths for RW, RO, and hidden directories
 	pathMap := make(map[string]string)
 	for _, p := range m.configData.ReadOnly {
 		pathMap[p] = "ro"
@@ -258,7 +258,7 @@ func (m model) saveAndExit() {
 	file, _ := json.MarshalIndent(prefs, "", "  ")
 	_ = os.WriteFile(".sandbox_prefs", file, 0644)
 
-	// 2. Build Package List
+	// Build Package List
 	var pkgs []string
 	for _, t := range m.tools {
 		if t.selected {
@@ -266,9 +266,6 @@ func (m model) saveAndExit() {
 		}
 	}
 	allPkgs := append([]string{"bash-completion", "fzf", "vim", "git"}, pkgs...)
-
-	// 3. Define the Shell Theme
-	// prompt := `export PS1="📦$"`
 
 	setupScript := fmt.Sprintf(`#!/bin/bash
 WSP="${WORKSPACE_PATH:-$(pwd)/workspace}"
